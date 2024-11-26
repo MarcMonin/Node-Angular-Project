@@ -2,6 +2,9 @@
 
 # Team Members: 
 Marc Monin
+
 Noémie Mazepa
+
 Ariste Mathiot
+
 Lorrain Morlet
