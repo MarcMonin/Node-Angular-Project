@@ -22,7 +22,7 @@
   padding: 30px; /* Espacement intérieur pour les boutons */
   width: 200px; /* Largeur des boutons */
   height: 100px; /* Hauteur des boutons */
-  background-color: #a52a2a; /* Couleur de fond des boutons */
+  background-color: #005cff; /* Couleur de fond des boutons */
   color: white; /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: 8px; /* Coins arrondis */
@@ -50,7 +50,7 @@
 /* Bouton de déconnexion */
 .logout-button {
   padding: 10px 20px;            /* Réduit l'espacement pour rendre le bouton plus petit */
-  background-color: #f44336;
+  background-color: #005cff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -61,7 +61,7 @@
 }
 
 .logout-button:hover {
-  background-color: #e57373;
+  background-color: #005cff;
 }
 
 .home-container {
@@ -74,7 +74,7 @@
   top: 20px;            /* Distance from the top */
   right: 20px;          /* Distance from the right */
   padding: 10px 20px;   /* Add padding to make it look like a button */
-  background-color: #a52a2a; /* Button color */
+  background-color: #005cff; /* Button color */
   color: white;         /* Text color */
   border: none;
   border-radius: 5px;
@@ -84,7 +84,7 @@
 }
 
 .profile-button:hover {
-  background-color: #e08585; /* Hover color */
+  background-color: #6fa4fd; /* Hover color */
 }
 
 
