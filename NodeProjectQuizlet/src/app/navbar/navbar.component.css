@@ -1,0 +1,42 @@
+.header {
+  display: flex; /* Utilise Flexbox pour aligner les éléments */
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: center; /* Centre verticalement */
+  padding: 10px; /* Ajoute de l'espacement autour de la barre */
+}
+
+.spacer {
+  flex-grow: 1; /* Utilise cet espace pour pousser le bouton d'aide à droite */
+}
+
+
+.home-button {
+  background: none;
+  border: none;
+  font-size: 32px; /* Augmente la taille du texte/icone */
+  cursor: pointer;
+  padding: 10px;
+  color: #333; /* Couleur de l'icône ou du texte */
+}
+
+.home-button:hover {
+  color: #000; /* Couleur au survol */
+}
+
+
+.help-button {
+  background-color: white; /* Couleur de fond du bouton d'aide */
+  color: black; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 8px 12px; /* Espacement intérieur ajusté */
+  font-size: 16px; /* Taille de la police égale à celle de l'icône de la maison */
+  cursor: pointer; /* Curseur pointer */
+  transition: background-color 0.3s; /* Transition pour le changement de couleur */
+  margin-left: 10px; /* Ajoute un peu d'espace à gauche du bouton Help */
+}
+
+.help-button:hover {
+  background-color: #e28383; /* Couleur au survol */
+}
+
