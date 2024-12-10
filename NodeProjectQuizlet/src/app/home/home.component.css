@@ -34,7 +34,7 @@
 }
 
 .home-container nav a:hover {
-  background-color: #e08585; /* Couleur du bouton au survol */
+  background-color: #6fa4fd; /* Couleur du bouton au survol */
 }
 
 /* Conteneur pour le bouton de déconnexion */
@@ -61,7 +61,7 @@
 }
 
 .logout-button:hover {
-  background-color: #005cff;
+  background-color: #6fa4fd;
 }
 
 .home-container {
