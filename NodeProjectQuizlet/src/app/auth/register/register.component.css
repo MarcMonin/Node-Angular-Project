@@ -1,9 +1,9 @@
 input.ng-invalid.ng-touched {
-  border: 1px solid red;
+  border: 1px solid #005cff;
 }
 
 small {
-  color: red;
+  color: #005cff;
   font-size: 0.8em;
   display: block; /* Assure que chaque <small> est sur une nouvelle ligne */
   text-align: center; /* Centrer le texte */
@@ -52,7 +52,7 @@ button {
   padding: 10px 20px; /* Espacement intérieur pour le bouton */
   margin: 10px auto; /* Centre le bouton */
   display: block; /* Assure que le bouton est un bloc pour le centrage */
-  background-color: #a52a2a; /* Couleur de fond du bouton */
+  background-color: #005cff; /* Couleur de fond du bouton */
   color: white; /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: 4px; /* Coins arrondis */
@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-  background-color: #e08585; /* Couleur du bouton au survol */
+  background-color: #6fa4fd; /* Couleur du bouton au survol */
 }
 
 p {
