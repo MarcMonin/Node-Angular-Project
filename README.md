@@ -7,13 +7,13 @@ https://github.com/MarcMonin/Node-Angular-Project/tree/main
 CDOF1
 
 ## Team Members: 
-Marc Monin
+Marc Monin - GitHub: MarcMonin
 
-Noémie Mazepa
+Noémie Mazepa - GitHub: Noemiemz
 
-Ariste Mathiot
+Ariste Mathiot - GitHub: ariste974
 
-Lorrain Morlet
+Lorrain Morlet - GitHub: Nasotro
 
 
 ## Project Summary:
@@ -57,3 +57,26 @@ graph TD
     B --> M[Favorite cities]
 ```
 
+## Description of each page
+
+### Register
+The registration page allows new users to create an account. To do this, they need to give their first and last name, their email and their password. 
+Once they are registered, the new user can log in to have access to a new feature: being able to save their favorite cities.
+
+### Login
+The login page allows already existing users to connect to their account by entering ther email and password.
+
+### Main weather page
+This page is the central page of our app and users can search for specific cities, view their current weather details like the temparature, the wind speed, the humidity, etc. They can put cities as their favorite and they can also go to another page to see daily and weekly forecasts.
+
+### Forecast page
+This page gives weather forecasts for a specific city with Highcharts. They can select if they want the forecast to be for the current day only or for the next few days with an average temperature for each day on the chart.
+
+### Favorite page
+This page lists all of the cities that were saved as favorite by the user so they can have a quck acces to them.
+
+### About page
+
+
+
+## User Guide
