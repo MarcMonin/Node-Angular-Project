@@ -10,6 +10,7 @@ import {StatsComponent} from "./stats/stats.component";
 import {ProfilComponent} from "./profil/profil.component";
 import {HelppageComponent} from "./helppage/helppage.component";
 import { WeatherCityComponent } from './weather-city/weather-city.component';
+import { ForecastComponent } from './forecast/forecast.component';
 
 export const routes: Routes = [
   {path: '', component: WelcomeComponent },
@@ -22,6 +23,7 @@ export const routes: Routes = [
   {path: 'profile', component: ProfilComponent},
   {path:'help', component: HelppageComponent},
   {path:'weather', component: WeatherCityComponent},
+  {path:'forecast', component: ForecastComponent},
 ];
 
 @NgModule({

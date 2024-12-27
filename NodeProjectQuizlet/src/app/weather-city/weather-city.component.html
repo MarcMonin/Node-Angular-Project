@@ -1,6 +1,7 @@
 <h1>{{ city.value ? 'Weather for ' + city.value : 'Select a City' }}</h1>
 <input #city type="text" placeholder="Enter city">
 <button (click)="getWeather(city.value)">Get Weather</button>
+<button (click)="goToForecast(city.value)">See forecast</button>
 
 <div *ngIf="weatherData && correctCity" class="weather-container">
   <h3>Weather in {{ weatherData.name }}, {{ weatherData.sys.country }}</h3>
