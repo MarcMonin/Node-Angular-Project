@@ -1,7 +1,12 @@
 <div class="welcome-container">
-  <h1>Welcome to your weather forecast</h1>
-  <p>Please choose an option below:</p>
-  <button (click)="goToLogin()">Login</button>
-  <button (click)="goToRegister()">Register</button>
+  <h1>Welcome to our weather web app</h1>
+  <app-weather-city/>
+  <div class="login-container">
+    <p>For the favourites, please choose an option below:</p>
+    <button (click)="goToLogin()">Login</button>
+    <button (click)="goToRegister()">Register</button>
+  </div>
 </div>
+
+
 
