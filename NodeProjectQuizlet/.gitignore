@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+weather-backend/node_modules/
 
 # Angular build
 dist/
