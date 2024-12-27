@@ -10,7 +10,6 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
   imports: [
     ReactiveFormsModule,
     NgIf,
-    RouterOutlet,
     RouterLink,
     HttpClientModule,
   ],

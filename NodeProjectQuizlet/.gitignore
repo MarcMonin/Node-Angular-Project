@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Angular build
+dist/
+
+# Environment variables
+.env
+
+# Angular CLI
+.angular/
+
+# VSCode
+.vscode/
+
+# Git
+.git/
+
+
+

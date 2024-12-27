@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { WeatherCityComponent } from '../weather-city/weather-city.component';
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [],
+  imports: [WeatherCityComponent],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })

@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
-import {RouterOutlet} from "@angular/router";
-import {HomeComponent} from "./home/home.component";
-import {NavbarComponent} from "./navbar/navbar.component";
-import {UserListComponent} from "./components/user-list/user-list.component";
-import {HttpClientModule} from "@angular/common/http";
-
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { WelcomeComponent } from "./welcome/welcome.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RegisterComponent, LoginComponent, RouterOutlet, HomeComponent, NavbarComponent,UserListComponent,HttpClientModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+    WelcomeComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'NodeProjectQuizlet';
+  title = 'NodeProjectWeather';
 }
