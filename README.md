@@ -1,28 +1,36 @@
-# Node-Angular-Project
+# Node and React Development Project
 
-# Team Members: 
+## GitHub link to the repository: 
+https://github.com/MarcMonin/Node-Angular-Project/tree/main 
+
+## Class:
+CDOF1
+
+## Team Members: 
 Marc Monin
 
-No?mie Mazepa
+Noémie Mazepa
 
 Ariste Mathiot
 
 Lorrain Morlet
 
 
-# SUJET
+## Project Summary:
+A weather app to check the current weather and forecasts for any city.
+The app provides real-time data on temperature, wind, humidity, and rain  but also charts to display the forecasts. 
+It is also possible to save your favorite cities for a quicker access.
 
-Weather forecast app that show the weather of a selected city
-## must include :
-- Hour per hour temperature in a graph (HighChart)
-- Selection of the city
-- Choosing favorite cities
-- rain probability
+### Must include :
+- Search for cities.
+- Show weather details like temperature, wind, humidity, and rain.
+- Weekly and daily forecasts with charts (Highcharts).
+- Save favorite cities.
 
-## Secondary needs : 
-- Authentication process
-- About Page
-- Settings page
+### Secondary needs : 
+- User login to manage the user's favorite cities.
+- About/Help page with some info about the app.
+- Settings page.
 
 
 ## Pages scheme
