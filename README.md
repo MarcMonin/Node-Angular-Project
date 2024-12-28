@@ -80,3 +80,15 @@ This page lists all of the cities that were saved as favorite by the user so the
 
 
 ## User Guide
+
+
+
+## Links used for Research and Help during this project:
+High Charts: https://codepen.io/pen?&prefill_data_id=325529a3-52ee-4202-b6fc-997aceac62f7
+https://www.highcharts.com/demo/highcharts/line-labels
+
+Open Weather Map API: https://openweathermap.org/api 
+https://openweathermap.org/current
+https://www.youtube.com/watch?v=14MDWUXYYEM&ab_channel=Elio-GeeZMoKeZ 
+
+Open Meteo API: https://open-meteo.com/en/docs/historical-weather-api
