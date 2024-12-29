@@ -62,13 +62,17 @@ graph TD
 ### Login
 The login page allows already existing users to connect to their account by entering ther email and password. If they are not already registered in the database, they can access the Register page through the register button.
 
+
+
 <div align="center">
     <img src="images/login.png" alt="login">
 </div>
 
 ### Register
 The registration page allows new users to create an account. To do this, they need to give their first and last name, their email and their password. 
-Once they are registered, the new user can log in to have access to a new feature: being able to save their favorite cities. It also features a button to go back to the login page
+Once they are registered, the new user can log in to have access to a new feature: being able to save their favorite cities. It also features a button to go back to the login page.
+
+
 
 <div align="center">
     <img src="images/register.png" alt="register">
@@ -77,19 +81,30 @@ Once they are registered, the new user can log in to have access to a new featur
 ### Main weather page
 This page is the central page of our app and users can search for specific cities, view their current weather details like the temparature, the wind speed, the humidity, etc. They can put cities as their favorite and they can also go to another page to see daily and weekly forecasts.
 
+
+
 <div align="center">
     <img src="images/main%20page.png" alt="main page">
 </div>
 
 ### Forecast page
 This page gives weather forecasts for a specific cities with Highcharts. They can select if they want the forecast to be for the current day only or for the next few days with an average temperature for each day on the chart.
+
+
+
 <div align="center">
     <img src="images/forecast%203%20cities%201.png" alt="forecast 1">
     <br>
     <img src="images/forecast%203%20cities%202.png" alt="forecast 2">
 </div>
+
+
 ### Favorite page
 This page lists all of the cities that were saved as favorite by the user so they can have a quck acces to them.
+
+<div align="center">
+    <img src="images/all%20favorites.png" alt="favorites">
+</div>
 
 ## User Guide
 Open the app in your browser.
