@@ -1,17 +1,37 @@
-<app-navbar></app-navbar>
-<div class="home-container">
-  <button class="profile-button" (click)="goToProfile()">Profil</button>
-  <h1>Welcome to your personal space!</h1>
-  <nav>
-    <a routerLink="/learning">Apprentissage</a>
-    <a routerLink="/quiz">Quiz</a>
-    <a routerLink="/stats">Statistiques</a>
-  </nav>
+<div class="container">
+  <!-- Barre de recherche -->
+  <div class="search-box">
+    <input [(ngModel)]="searchCity" 
+           placeholder="Rechercher une ville..."
+           (keyup.enter)="searchWeather()">
+    <button (click)="searchWeather()">Rechercher</button>
+  </div>
 
-  <!-- Pour afficher les composants enfants -->
-  <router-outlet></router-outlet>
-  <div class="logout-container">
-    <button class="logout-button" (click)="logout()">Déconnexion</button>
+  <!-- Affichage m?t?o -->
+  <div class="weather-card" *ngFor="let weather of weatherData">
+    <h2>{{ weather.name }}</h2>
+    <div class="weather-info">
+      <img [src]="'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'" 
+           [alt]="weather.weather[0].description">
+      <div class="temperature">{{ weather.main.temp | number:'1.0-0' }}?C</div>
+      <div class="details">
+        <p>Ressenti: {{ weather.main.feels_like | number:'1.0-0' }}?C</p>
+        <p>Humidit?: {{ weather.main.humidity }}%</p>
+      </div>
+      <button (click)="addToFavorites(weather.name)" 
+              [disabled]="favorites.includes(weather.name)">
+        {{ favorites.includes(weather.name) ? '?' : '?' }} 
+        {{ favorites.includes(weather.name) ? 'Added to favorites' : 'Add to favorites' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Display favorites list -->
+  <div class="favorites-section">
+    <h3>Your Favorite Cities</h3>
+    <ul>
+      <li *ngFor="let city of favorites">{{ city }}</li>
+    </ul>
   </div>
 </div>
 

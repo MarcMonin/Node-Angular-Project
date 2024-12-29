@@ -32,3 +32,12 @@
   </div>
 </form>
 <p>Already have an account? <a routerLink="/login">Log in here</a></p>
+
+<div *ngIf="registerSuccess" class="alert alert-success">
+  {{ registerSuccess }}
+  <div>Redirection vers la page de connexion...</div>
+</div>
+
+<div *ngIf="registerError" class="alert alert-danger">
+  {{ registerError }}
+</div>

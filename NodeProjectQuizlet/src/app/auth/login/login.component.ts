@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {NgIf} from "@angular/common";
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent {
   loginError='';
   formControls: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private http:HttpClient) {
+  constructor(private fb: FormBuilder, private router: Router, private http:HttpClient, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -38,11 +39,13 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       console.log('Form is valid, submitting...');
       // Envoi de la requête HTTP à l'API pour vérifier l'email et le mot de passe
-      this.http.post('http://localhost:3000/login', { email, password }).subscribe(
+      this.http.post('http://localhost:3000/api/login', { email, password }).subscribe(
         (response: any) => {
-          // Si la réponse est réussie, rediriger vers la page d'accueil
+          // Si la r?ponse est r?ussie, rediriger vers la page d'accueil
           console.log('Login successful:', response);
           this.isLoggedIn = true;
+          // Store user information
+          this.authService.setCurrentUser(response.user);
           this.router.navigate(['/home']);
         },
         (error) => {

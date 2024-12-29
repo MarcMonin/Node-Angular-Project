@@ -34,14 +34,21 @@ export class RegisterComponent {
   onRegister() {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
-      this.http.post('http://localhost:3000/register', formData).subscribe(
+      this.http.post('http://localhost:3000/api/register', formData).subscribe(
         (response: any) => {
           this.registerSuccess = response.message;
           this.registerError = '';
+          this.isRegistered = true;
+          
+          // Redirect to login page after 2 seconds
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
         },
         (error) => {
           this.registerError = error.error.message || 'Erreur lors de l\'inscription.';
           this.registerSuccess = '';
+          this.isRegistered = false;
         }
       );
     }

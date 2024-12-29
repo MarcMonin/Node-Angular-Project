@@ -1,90 +1,88 @@
-/* Styles pour la page d'accueil */
-.home-container {
-  text-align: center; /* Centrer le contenu */
-  padding: 20px; /* Espacement intérieur */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-.home-container h1 {
-  margin-bottom: 20px; /* Espacement entre le titre et la navigation */
-}
-
-.home-container nav {
-  display: flex; /* Utiliser flexbox pour aligner les éléments */
-  justify-content: center; /* Centrer les éléments horizontalement */
-  gap: 20px; /* Espacement entre les boutons */
-  margin-bottom: 20px;
-}
-
-.home-container nav a {
-  display: flex; /* Assure que chaque lien est un bloc */
-  align-items: center;
-  justify-content: center;
-  padding: 30px; /* Espacement intérieur pour les boutons */
-  width: 200px; /* Largeur des boutons */
-  height: 100px; /* Hauteur des boutons */
-  background-color: #005cff; /* Couleur de fond des boutons */
-  color: white; /* Couleur du texte */
-  border: none; /* Pas de bordure */
-  border-radius: 8px; /* Coins arrondis */
-  text-decoration: none; /* Pas de soulignement */
-  font-size: 18px; /* Taille du texte */
-  cursor: pointer; /* Curseur pointer sur le bouton */
-  transition: background-color 0.3s; /* Transition pour le changement de couleur */
-  line-height: 100px;
-}
-
-.home-container nav a:hover {
-  background-color: #6fa4fd; /* Couleur du bouton au survol */
-}
-
-/* Conteneur pour le bouton de déconnexion */
-.logout-container {
+.search-box {
   display: flex;
-  justify-content: center;       /* Centre le bouton horizontalement */
-  align-items: flex-end;         /* Aligne le bouton en bas */
-  position: fixed;
-  bottom: 50px;/* Position à 20px du bas */
-  width: 100%;                   /* Prend toute la largeur de la page pour le centrage */
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* Bouton de déconnexion */
-.logout-button {
-  padding: 10px 20px;            /* Réduit l'espacement pour rendre le bouton plus petit */
-  background-color: #005cff;
-  color: white;
+.search-box input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.weather-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.temperature {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.favourites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.favourite-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.favourite-item:hover {
+  transform: translateY(-2px);
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+button {
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
-  text-decoration: none;
-  font-size: 16px;
+  background: #007bff;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.logout-button:hover {
-  background-color: #6fa4fd;
+button:disabled {
+  background: #cccccc;
 }
 
-.home-container {
-  position: relative; /* Allows absolute positioning inside this container */
-}
-
-/* Profile button */
-.profile-button {
-  position: absolute;
-  top: 20px;            /* Distance from the top */
-  right: 20px;          /* Distance from the right */
-  padding: 10px 20px;   /* Add padding to make it look like a button */
-  background-color: #005cff; /* Button color */
-  color: white;         /* Text color */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.profile-button:hover {
-  background-color: #6fa4fd; /* Hover color */
+.favourite-btn {
+  width: 100%;
+  margin-top: 1rem;
 }
 
 

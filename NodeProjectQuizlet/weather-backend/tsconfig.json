@@ -103,7 +103,8 @@
     "rootDir": "./src"
   },
   "include": [
-    "src/app.ts"
+    "src/app.ts",
+    "src/server.ts"
   ],
   "exclude": [
     "node_modules"
