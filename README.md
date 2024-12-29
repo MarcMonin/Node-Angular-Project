@@ -1,5 +1,5 @@
 # Node and React Development Project
-
+![Weather for Paris](images/weather%20for%20paris.png)
 ## GitHub link to the repository: 
 https://github.com/MarcMonin/Node-Angular-Project/tree/main 
 
