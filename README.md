@@ -109,7 +109,7 @@ When a user is logged in, they have access to this page where they can add favor
 </div>
 
 ## Backend Description
-First, we used MySQL to create and store our users and their favorite cities. The backend is connected to this Database and thus compiling the website might work for any other person than us.
+First, we used MySQL to create and store our users and their favorite cities. The backend is connected to this Database and thus compiling the website might work for any other person than us. To use the database from MySQL, we need to give a username and a password as well as the host IP address and the name of our database.
 We created some CRUD requests to retrieve the data from MySQL and also modify it. This way we can add users to the database.
 
 For the weather part, we used to APIs: openweathermap and openmeteo. We use their key and extract data from thos APIs with GET requests.
