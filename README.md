@@ -1,5 +1,5 @@
 # Node and React Development Project
-![Weather for Paris](images/login.png)
+
 ## GitHub link to the repository: 
 https://github.com/MarcMonin/Node-Angular-Project/tree/main 
 
@@ -61,6 +61,7 @@ graph TD
 
 ### Login
 The login page allows already existing users to connect to their account by entering ther email and password. If they are not already registered in the database, they can access the Register page through the register button.
+![login](images/login.png)
 
 ### Register
 The registration page allows new users to create an account. To do this, they need to give their first and last name, their email and their password. 
