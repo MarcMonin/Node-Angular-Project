@@ -1,89 +1,10 @@
-.container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+/* You can keep some custom styles if needed */
+.weather-info img {
+  width: 100px;
+  height: 100px;
 }
 
-.search-box {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.search-box input {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.weather-card {
-  background: white;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-}
-
-.weather-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.temperature {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.favourites-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.favourite-item {
-  background: white;
-  padding: 1rem;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.favourite-item:hover {
-  transform: translateY(-2px);
-}
-
-.remove-btn {
-  background: none;
-  border: none;
-  color: #ff4444;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background: #007bff;
-  color: white;
-  cursor: pointer;
-}
-
-button:disabled {
-  background: #cccccc;
-}
-
-.favourite-btn {
-  width: 100%;
-  margin-top: 1rem;
-}
+/* Add any custom styles that Bootstrap doesn't provide */
 
 
 

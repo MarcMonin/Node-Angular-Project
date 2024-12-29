@@ -1,0 +1,10 @@
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+::ng-deep .ag-row {
+  height: 48px !important;
+}
+
+::ng-deep .ag-header-row {
+  height: 48px !important;
+}

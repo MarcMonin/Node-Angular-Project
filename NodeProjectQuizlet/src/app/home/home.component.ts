@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { FavoritesListComponent } from '../components/favorites-list/favorites-list.component';
 import { WeatherService } from '../services/weather.service';
+import { RouterModule } from '@angular/router';
 
 interface WeatherData {
   name: string;
@@ -30,7 +31,8 @@ interface Favourite {
   imports: [
     CommonModule, 
     FormsModule, 
-    FavoritesListComponent
+    FavoritesListComponent,
+    RouterModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']

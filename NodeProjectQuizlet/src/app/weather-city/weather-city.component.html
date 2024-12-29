@@ -1,39 +1,53 @@
-<h1>{{ city.value ? 'Weather for ' + city.value : 'Select a City' }}</h1>
-<input #city type="text" placeholder="Enter city">
-<button (click)="getWeather(city.value)">Get Weather</button>
-<button (click)="goToForecast(city.value)">See forecast</button>
-
-<div *ngIf="weatherData && correctCity" class="weather-container">
-  <h3>Weather in {{ weatherData.name }}, {{ weatherData.sys.country }}</h3>
-  
-  <div class="time-info">
-    <p>Last updated: {{ weatherData.dt * 1000 | date:'MMM d, y, HH:mm:ss' }}</p>
-    <p>Local time: {{ (weatherData.dt * 1000) + (weatherData.timezone * 1000) | date:'MMM d, y, HH:mm:ss' }}</p>
+<div class="weather-page">
+  <div class="search-container">
+    <h1>{{ city.value ? 'Weather for ' + city.value : 'Weather Forecast' }}</h1>
+    <div class="search-box">
+      <input #city type="text" placeholder="Enter city name">
+      <button (click)="getWeather(city.value)">Get Weather</button>
+    </div>
   </div>
 
-  <div class="main-info">
-    <p>Temperature: {{ weatherData.main.temp }}°C</p>
-    <p>Feels like: {{ weatherData.main.feels_like }}°C</p>
-    <p>Condition: {{ weatherData.weather[0].description }}</p>
-  </div>
+  <div *ngIf="weatherData && correctCity" class="weather-container">
+    <div class="weather-header">
+      <h2>{{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
+      <div class="temperature-display">
+        <span class="temp-main">{{ weatherData.main.temp }}°C</span>
+        <span class="temp-emoji">{{ getTemperatureEmoji(weatherData.main.temp) }}</span>
+      </div>
+      <p class="weather-description">{{ weatherData.weather[0].description | titlecase }}</p>
+    </div>
 
-  <div class="details">
-    <h4>Details:</h4>
-    <p>Min Temperature: {{ weatherData.main.temp_min }}°C</p>
-    <p>Max Temperature: {{ weatherData.main.temp_max }}°C</p>
-    <p>Wind Speed: {{ weatherData.wind.speed }} m/s</p>
-    <p>Wind Direction: {{ weatherData.wind.deg }}°</p>
-    <p>Visibility: {{ weatherData.visibility / 1000 }} km</p>
-    <p>Cloud Cover: {{ weatherData.clouds.all }}%</p>
-  </div>
+    <div class="weather-grid">
+      <div class="weather-card">
+        <h3>Temperature</h3>
+        <p>Feels like: {{ weatherData.main.feels_like }}°C</p>
+        <p>Min: {{ weatherData.main.temp_min }}°C</p>
+        <p>Max: {{ weatherData.main.temp_max }}°C</p>
+      </div>
 
-  <div class="location-info">
-    <p>Coordinates: {{ weatherData.coord.lat }}°N, {{ weatherData.coord.lon }}°E</p>
-  </div>
+      <div class="weather-card">
+        <h3>Wind</h3>
+        <p>Speed: {{ weatherData.wind.speed }} m/s</p>
+        <p>Direction: {{ weatherData.wind.deg }}°</p>
+      </div>
 
-  <div *ngIf="weatherData && correctCity">
-    {{ weatherData.main.temp }}°C 
-    {{ getTemperatureEmoji(weatherData.main.temp) }}
+      <div class="weather-card">
+        <h3>Conditions</h3>
+        <p>Visibility: {{ weatherData.visibility / 1000 }} km</p>
+        <p>Cloud Cover: {{ weatherData.clouds.all }}%</p>
+      </div>
+
+      <div class="weather-card">
+        <h3>Location</h3>
+        <p>Lat: {{ weatherData.coord.lat }}°N</p>
+        <p>Lon: {{ weatherData.coord.lon }}°E</p>
+      </div>
+    </div>
+
+    <div class="time-info">
+      <p>Last updated: {{ weatherData.dt * 1000 | date:'MMM d, y, HH:mm:ss' }}</p>
+      <p>Local time: {{ (weatherData.dt * 1000) + (weatherData.timezone * 1000) | date:'MMM d, y, HH:mm:ss' }}</p>
+    </div>
   </div>
 </div>
 

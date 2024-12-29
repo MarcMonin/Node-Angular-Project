@@ -2,29 +2,29 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WeatherService } from '../services/weather.service';
 import { CommonModule, NgIf } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
-import { Router, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-weather-city',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgIf, HttpClientModule, RouterModule], // Add HttpClientModule here
+  imports: [CommonModule, FormsModule, NgIf, HttpClientModule, RouterModule],
   templateUrl: './weather-city.component.html',
   styleUrls: ['./weather-city.component.css']
 })
 export class WeatherCityComponent {
-  
-  goToForecast(city: string) {
-    this.router.navigate(['/forecast'], {
-      queryParams: { city: city }
-    });
-  }
-
   weatherData: any = null;
-  city: string = 'paris';
+  city: string;
   correctCity: boolean = false;
 
-  constructor(private weatherService: WeatherService, private router: Router) { }
+  constructor(
+    private weatherService: WeatherService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.city = this.route.snapshot.params['city'] || 'paris';
+    this.getWeather(this.city);
+  }
 
   getWeather(city: string) {
     this.weatherService.getWeather(city).subscribe(data => {
@@ -46,10 +46,10 @@ export class WeatherCityComponent {
   }
 
   getTemperatureEmoji(temp: number): string {
-    if (temp >= 30) return '🥵'; // Hot
-    if (temp >= 20) return '☀️'; // Warm/Sunny
-    if (temp >= 10) return '😊'; // Mild
-    if (temp >= 0) return '❄️';  // Cold
-    return '🥶';                 // Freezing
+    if (temp >= 30) return '🥵'; 
+    if (temp >= 20) return '☀️'; 
+    if (temp >= 10) return '😊'; 
+    if (temp >= 0) return '❄️';  
+    return '🥶';                 
   }
 }

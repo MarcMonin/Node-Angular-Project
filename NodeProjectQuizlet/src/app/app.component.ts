@@ -26,9 +26,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // Check if user is logged in when the app starts
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/home']);
-    }
+    // if (this.authService.isLoggedIn()) {
+    //   this.router.navigate(['/home']);
+    // }
   }
 
   navigateHome() {

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorite-card',
@@ -7,13 +8,22 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <div class="favorite-card">
-      <h3>{{ cityName }}</h3>
-      <button (click)="onRemove()" class="remove-btn">
+      <button class="favorite-btn" (click)="onClickFavorite()">{{ cityName }}</button>
+      <button (click)="onClickFavorite()" class="remove-btn">
         <span> X </span>
       </button>
     </div>
   `,
   styles: [`
+
+    .favorite-btn {
+      background: none;
+      border: none;
+      color: #000000;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
     .favorite-card {
       display: flex;
       justify-content: space-between;
@@ -51,8 +61,9 @@ import { CommonModule } from '@angular/common';
 export class FavoriteCardComponent {
   @Input() cityName!: string;
   @Output() remove = new EventEmitter<string>();
+  constructor(private router: Router) {}
 
-  onRemove() {
-    this.remove.emit(this.cityName);
+  onClickFavorite() {
+    this.router.navigate(['/weather', this.cityName]);
   }
-} 
+}

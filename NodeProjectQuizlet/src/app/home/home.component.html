@@ -1,32 +1,57 @@
-<div class="container">
-  <!-- Barre de recherche -->
-  <div class="search-box">
-    <input [(ngModel)]="searchCity" 
-           placeholder="Rechercher une ville..."
-           (keyup.enter)="searchWeather()">
-    <button (click)="searchWeather()">Rechercher</button>
-  </div>
-
-  <!-- Affichage météo -->
-  <div class="weather-card" *ngFor="let weather of weatherData">
-    <h2>{{ weather.name }}</h2>
-    <div class="weather-info">
-      <img [src]="'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'" 
-           [alt]="weather.weather[0].description">
-      <div class="temperature">{{ weather.main.temp | number:'1.0-0' }}°C</div>
-      <div class="details">
-        <p>Ressenti: {{ weather.main.feels_like | number:'1.0-0' }}°C</p>
-        <p>Humidité: {{ weather.main.humidity }}%</p>
-      </div>
-      <button (click)="addToFavorites(weather.name)" 
-              [disabled]="favorites.includes(weather.name)">
-        {{ favorites.includes(weather.name) ? '★' : '☆' }} 
-        {{ favorites.includes(weather.name) ? 'Added to favorites' : 'Add to favorites' }}
-      </button>
+<div class="container py-4">
+  <!-- Navigation buttons -->
+  <div class="mb-4">
+    <div class="btn-group">
+      <button class="btn btn-outline-primary" routerLink="/favorites">View All Favorites</button>
+      <button class="btn btn-outline-primary" routerLink="/forecast">View Forecast</button>
     </div>
   </div>
 
-  <!-- Replace the favorites section with the new component -->
+  <!-- Search box -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="input-group">
+        <input class="form-control" 
+               [(ngModel)]="searchCity" 
+               placeholder="Search for a city..."
+               (keyup.enter)="searchWeather()">
+        <button class="btn btn-primary" (click)="searchWeather()">
+          <i class="bi bi-search"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weather display -->
+  <div class="row">
+    <div class="col-md-8 mx-auto" *ngFor="let weather of weatherData">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="card-title text-center">{{ weather.name }}</h2>
+          <div class="text-center">
+            <img [src]="'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'" 
+                 [alt]="weather.weather[0].description"
+                 class="mb-2">
+            <h3 class="display-4">{{ weather.main.temp | number:'1.0-0' }}°C</h3>
+            <div class="mb-3">
+              <p class="mb-1">Feels like: {{ weather.main.feels_like | number:'1.0-0' }}°C</p>
+              <p class="mb-1">Humidity: {{ weather.main.humidity }}%</p>
+            </div>
+            <button class="btn" 
+                    [class.btn-warning]="favorites.includes(weather.name)"
+                    [class.btn-outline-warning]="!favorites.includes(weather.name)"
+                    (click)="addToFavorites(weather.name)" 
+                    [disabled]="favorites.includes(weather.name)">
+              {{ favorites.includes(weather.name) ? '★' : '☆' }} 
+              {{ favorites.includes(weather.name) ? 'Added to favorites' : 'Add to favorites' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorites list component -->
   <app-favorites-list
     [favorites]="favorites"
     (removeCity)="removeFromFavorites($event)"
