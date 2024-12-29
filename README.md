@@ -39,20 +39,13 @@ graph TD
     A[Home Page] --> C[User Authentication Page]
     H --> B[Account lobby]
     J --> C
-    A --> E[About Page]
     O --> F[ag-Grid Screen]
     M --> F
     O --> G[HighCharts Screen]
     M --> G
     C --> H[Login]
     C --> I[Register]
-    C --> J[Forgot Password]
-    D --> K[Profile Settings]
-    D --> L[Notification Settings]
-    E --> N[Project Information]
     I --> H
-    B --> D[Settings Page]
-    B --> E
     B --> O[City Selector]
     B --> M[Favorite cities]
 ```
@@ -75,10 +68,18 @@ Once they are registered, the new user can log in to have access to a new featur
 </div>
 
 ### Main weather page
-This page is the central page of our app and users can search for specific cities, view their current weather details like the temparature, the wind speed, the humidity, etc. If the user is logged in, they are able to select cities as favorite so that they will be able to quickly access them in the favorites page.
+This page is the first page of our app. There are several buttons that make us access different other pages in the website. First we have the "Current Weather" button that will direct to the page where we can check current weather details for any city we want. Then, there is the "Weather Forecast" button that directs us to the page where we can see forecasts for any city we want. Then as written, to have the possibility to add cities as favorite, the user needs either to Login or Register. These 2 buttons direct us to forms we need to fill.
 <br>
 <div align="center">
     <img src="images/main%20page.png" alt="main page">
+</div>
+
+
+### Current weather page
+This page has a search bar where we can type in any city we want. When we click on the get weather button, we can see a lot of different weather details about the city like the temperature, the wind, the clouds coverage, etc. We can search as much as we want.
+<br>
+<div align="center">
+    <img src="images\Weather for paris.png" alt="current weather page">
 </div>
 
 ### Forecast page
@@ -92,11 +93,30 @@ This page gives weather forecasts for a specific cities with Highcharts. The use
 
 
 ### Favorite page
-This page lists all of the cities that were saved as favorite by the user so they can have a quck acces to them.
+This page lists all of the cities that were saved as favorite by the user so they can have a quick acces to them. We used AG-Grid to do that and the user can sort their favorite cities by name, temperature, wind, etc. They can also remove any city they want from the list.
 <br>
 <div align="center">
     <img src="images/all%20favorites.png" alt="favorites">
 </div>
+
+### User page
+When a user is logged in, they have access to this page where they can add favorite cities and preview some weather details. Then they can access their favorite list and view the forecasts. if they click on any of the cities, it directs them to the current weather page.
+<br>
+<div align="center">
+    <img src="images\home 1.png" alt="user page 1">
+    <br>
+    <img src="images\home 2.png" alt="user page 2">
+</div>
+
+## Backend Description
+First, we used MySQL to create and store our users and their favorite cities. The backend is connected to this Database and thus compiling the website might work for any other person than us.
+We created some CRUD requests to retrieve the data from MySQL and also modify it. This way we can add users to the database.
+
+For the weather part, we used to APIs: openweathermap and openmeteo. We use their key and extract data from thos APIs with GET requests.
+
+Finally, we used Swagger UI to view and test our CRUD routes with the /api-docs http address. We also used Postman for some time.
+
+
 
 ## User Guide
 Open the app in your browser.
@@ -115,12 +135,12 @@ Access your saved cities on the "Favorite" page to manage your list.
 
 Enjoy using our weather app to stay informed about weather conditions in your favorite cities!
 
+For more information, see our demo video where we explain everything.
+
+
 ## Links used for Research and Help during this project:
 High Charts: https://codepen.io/pen?&prefill_data_id=325529a3-52ee-4202-b6fc-997aceac62f7 https://www.highcharts.com/demo/highcharts/line-labels
 
-Open Weather Map API: https://openweathermap.org/api https://openweathermap.org/current https://www.youtube.com/watch?v=14MDWUXYYEM&ab_channel=Elio-GeeZMoKeZ
-
-Open Meteo API: https://open-meteo.com/en/docs/historical-weather-api
 
 Open Weather Map API: https://openweathermap.org/api 
 https://openweathermap.org/current
