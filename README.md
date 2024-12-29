@@ -15,6 +15,8 @@ Ariste Mathiot - GitHub: ariste974
 
 Lorrain Morlet - GitHub: Nasotro
 
+## Table of Content
+- [Project Summary](##Project-Summary)
 
 ## Project Summary:
 A weather app to check the current weather and forecasts for any city.
