@@ -118,23 +118,48 @@ Finally, we used Swagger UI to view and test our CRUD routes with the /api-docs 
 
 
 ## User Guide
-Open the app in your browser.
 
-Create an account or log in to access personalized features like saving your favorite cities.
+This is a comprehensive guide to make the app work on any device.
 
-Use the search bar on the main page to find a city's weather details.
+### Requirements :
+-Node.js 
+-Npm (usually installed along node.js)
+-Angular framework (use command npm install -g @angular/cli)
+-MySQL
+-A working IDE (it can work off visual studio code or other text editors but we recommend Intellij for ease of use)
 
-Explore the current conditions and forecasts for the selected city.
+### Setup :
 
-Click the "Add to Favorites" button to save cities for quick access later.
+The first step is downloading the github repository. You can do it either as a zip or using git clone if you have git installed.
+Open it in the IDE and install the node modules (if you chose Intellij, it should be proposed automatically otherwise you might have to do it manually (npm install))
+**The Front-end should now work**, feel free to open it using the start command that can be found in package.json of the front end
+To make the Back-end work we will need to setup a database in MySQL.
+Open MySQL Workbench create a connection. Ensure that the connection has the following parameters, host:127.0.0.1, user:root, password:root.
+Link your IDE with MySQL.
+Run the init.sql file (there might be errors with the first line due to the weather_login database not yet existing, feel free to remove this line if need be)
+Now that the database is setup, all that is left is to run the the Back-end
+Run the following commands :
+-"tsc" to create a .js duplicate of the .ts files in a dist directory
+-"node dist/app.js" to run the backend
+**The Back-end should now work**
+Now all that is left is to open the app by typing "http://localhost:4200/"
+Have fun !
 
-Navigate to the forecast page for detailed weekly and hourly weather trends.
+### Usage
+*This is the same as the video available in the files*
 
-Access your saved cities on the "Favorite" page to manage your list.
+When you open the app, you initially arrive at the home page. 
+From there you have 4 options :
+-Opening the Weather page
+-Opening the Forecast page
+-Opening the Login page
+-Opening the Register page
 
-Enjoy using our weather app to stay informed about weather conditions in your favorite cities!
+The Weather page allows to select a city and see its detailed weather information
+The Forecast page lets you choose up to 3 cities by typing their names and see the forecast over the next 24 hours and over the next 5 days
 
-For more information, see our demo video where we explain everything.
+If you wish to login, you initially need to register by giving a surname, last name, email and password. The page will then automatically redirect you to the login page
+Once you have logged in, you gain access to the account lobby, where you can choose favorite cities to see brief weather information. The advantage of logging in is the ability to have your favorite cities retained by the app the next time you open it.
 
 
 ## Links used for Research and Help during this project:
