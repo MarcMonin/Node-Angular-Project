@@ -19,7 +19,7 @@
 /Backend/.idea/
 /Frontend/.idea/
 
-
-
-
+.gitignore
+.git/
+.idea/
 
