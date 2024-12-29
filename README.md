@@ -128,11 +128,11 @@ Finally, we used Swagger UI to view and test our CRUD routes with the /api-docs 
 
 This is a comprehensive guide to make the app work on any device.
 
-### Requirements :
--Node.js 
--Npm (usually installed along node.js)
--Angular framework (use command npm install -g @angular/cli)
--MySQL
+### Requirements :\
+-Node.js\
+-Npm (usually installed along node.js)\
+-Angular framework (use command npm install -g @angular/cli)\
+-MySQL\
 -A working IDE (it can work off visual studio code or other text editors but we recommend Intellij for ease of use)
 
 ### Setup :
@@ -145,28 +145,28 @@ Open MySQL Workbench create a connection. Ensure that the connection has the fol
 Link your IDE with MySQL.\
 Run the init.sql file (there might be errors with the first line due to the weather_login database not yet existing, feel free to remove this line if need be)\
 Now that the database is setup, all that is left is to run the the Back-end\
-Run the following commands :
--"tsc" to create a .js duplicate of the .ts files in a dist directory
+Run the following commands :\
+-"tsc" to create a .js duplicate of the .ts files in a dist directory\
 -"node dist/app.js" to run the backend\
 **The Back-end should now work**\
-Now all that is left is to open the app by typing "http://localhost:4200/"\
-Have fun !\
+Now all that is left is to open the app by typing "http://localhost:4200/"  \
+Have fun !
 
 ### Usage
 *This is the same as the video available in the files*
 
-When you open the app, you initially arrive at the home page.
-From there you have 4 options :
--Opening the Weather page
--Opening the Forecast page
--Opening the Login page
--Opening the Register page
+When you open the app, you initially arrive at the home page.\
+From there you have 4 options :\
+-Opening the Weather page\
+-Opening the Forecast page\
+-Opening the Login page\
+-Opening the Register page\
 
-The Weather page allows to select a city and see its detailed weather information
-The Forecast page lets you choose up to 3 cities by typing their names and see the forecast over the next 24 hours and over the next 5 days
+The Weather page allows to select a city and see its detailed weather information\
+The Forecast page lets you choose up to 3 cities by typing their names and see the forecast over the next 24 hours and over the next 5 days\
 
-If you wish to login, you initially need to register by giving a surname, last name, email and password. The page will then automatically redirect you to the login page
-Once you have logged in, you gain access to the account lobby, where you can choose favorite cities to see brief weather information. The advantage of logging in is the ability to have your favorite cities retained by the app the next time you open it.
+If you wish to login, you initially need to register by giving a surname, last name, email and password. The page will then automatically redirect you to the login page\
+Once you have logged in, you gain access to the account lobby, where you can choose favorite cities to see brief weather information. The advantage of logging in is the ability to have your favorite cities retained by the app the next time you open it.\
 
 
 ## Links used for Research and Help during this project:
