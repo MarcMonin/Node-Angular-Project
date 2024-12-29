@@ -1,0 +1,24 @@
+<header>
+  <h1>
+    <button (click)="navigateHome()" style="margin-left: 15px; padding: 5px 10px; cursor: pointer; border: none; background: none;">
+      <i class="material-icons" style="vertical-align: middle; color: white;">home</i>
+    </button>
+    Weather Platform
+  </h1>
+  <div class="header-controls" *ngIf="authService.isLoggedIn()">
+    <button (click)="logout()" class="logout-btn">
+      <i class="material-icons">logout</i>
+      Disconnect
+    </button>
+  </div>
+</header>
+
+<!-- <app-welcome></app-welcome> -->
+<!-- <app-weather-city></app-weather-city> -->
+<!-- <app-login></app-login> -->
+
+<router-outlet></router-outlet>
+
+<footer>
+  <p>&copy; 2024 Weather Platform. All rights reserved.</p>
+</footer>

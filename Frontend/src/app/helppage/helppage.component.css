@@ -1,0 +1,22 @@
+.help-page {
+  max-width: 800px; /* Limit the width of the help page */
+  margin: 20px auto; /* Center the content */
+  padding: 30px; /* Add some padding */
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-bottom: 60px;
+}
+
+.help-page h1, .help-page h2 {
+  color: #333; /* Dark color for headings */
+}
+
+.help-page p {
+  line-height: 1.6; /* Increase line height for readability */
+}
+
+.help-page ul {
+  list-style-type: disc; /* Bulleted list style */
+  margin-left: 20px; /* Indent the list */
+}

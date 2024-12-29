@@ -1,0 +1,99 @@
+.form-container {
+  display: flex; /* Use flexbox to arrange items side by side */
+  justify-content: center; /* Center the forms horizontally */
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Space between the forms */
+  margin-top: 20px; /* Margin above the container */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Espacement entre les champs du formulaire */
+}
+
+.form-box {
+  border-radius: 8px; /* Rounded corners for the boxes */
+  padding: 20px; /* Padding inside the boxes */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  width: 300px; /* Fixed width for the form boxes */
+  display: flex; /* Use flexbox for the form box */
+  flex-direction: column; /* Arrange children in a column */
+  justify-content: space-between; /* Space between items, pushing the button down */
+}
+
+.register-box {
+  background-color: #468ba4; /* Bright pink background for the registration box */
+}
+
+.login-box {
+  background-color: #107b9a; /* Light pink background for the login box */
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+.submit-button {
+  width: 100%; /* Make the button take the full width */
+  padding: 15px; /* Increase the padding for a larger button */
+  font-size: 18px; /* Increase font size for the button text */
+  background-color: #97d0e1; /* Bright pink color for the button */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-top: auto; /* Push the button to the bottom of the box */
+}
+
+.submit-button:disabled {
+  background-color: #e4ecef; /* Color when the button is disabled */
+  cursor: not-allowed; /* Change cursor to indicate disabled */
+}
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  height: 100%; /* Ensure the body takes full height */
+  overflow-x: hidden; /* Désactive le défilement horizontal */
+}
+app-root {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #005cff;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #f1f1f1;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
