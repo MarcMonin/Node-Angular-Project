@@ -17,7 +17,11 @@ Lorrain Morlet - GitHub: Nasotro
 
 ## Table of Content
 - [Project Summary](##Project-Summary)
+- [Page Description](##Description-of-each-page)
+- [Backend Description](##Backend-Description)
+- [User Guide](##User-Guide)
 
+  
 ## Project Summary:
 A weather app to check the current weather and forecasts for any city.
 The app provides real-time data on temperature, wind, humidity, and rain  but also charts to display the forecasts. 
