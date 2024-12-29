@@ -1,7 +1,7 @@
 # Node and React Development Project
 
 ## GitHub link to the repository: 
-https://github.com/MarcMonin/Node-Angular-Project/tree/main 
+https://github.com/MarcMonin/Node-Angular-Project 
 
 ## Class:
 CDOF1
