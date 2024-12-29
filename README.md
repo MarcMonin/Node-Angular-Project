@@ -61,9 +61,7 @@ graph TD
 
 ### Login
 The login page allows already existing users to connect to their account by entering ther email and password. If they are not already registered in the database, they can access the Register page through the register button.
-
-
-
+<br>
 <div align="center">
     <img src="images/login.png" alt="login">
 </div>
@@ -71,27 +69,21 @@ The login page allows already existing users to connect to their account by ente
 ### Register
 The registration page allows new users to create an account. To do this, they need to give their first and last name, their email and their password. 
 Once they are registered, the new user can log in to have access to a new feature: being able to save their favorite cities. It also features a button to go back to the login page.
-
-
-
+<br>
 <div align="center">
     <img src="images/register.png" alt="register">
 </div>
 
 ### Main weather page
-This page is the central page of our app and users can search for specific cities, view their current weather details like the temparature, the wind speed, the humidity, etc. They can put cities as their favorite and they can also go to another page to see daily and weekly forecasts.
-
-
-
+This page is the central page of our app and users can search for specific cities, view their current weather details like the temparature, the wind speed, the humidity, etc. If the user is logged in, they are able to select cities as favorite so that they will be able to quickly access them in the favorites page.
+<br>
 <div align="center">
     <img src="images/main%20page.png" alt="main page">
 </div>
 
 ### Forecast page
-This page gives weather forecasts for a specific cities with Highcharts. They can select if they want the forecast to be for the current day only or for the next few days with an average temperature for each day on the chart.
-
-
-
+This page gives weather forecasts for a specific cities with Highcharts. The user can select up to 3 cities for which the weather will be predicted. Then, the user has access to 2 charts, the first one being the forecast for the next 24 hours and the second one being the forecast for the next 5 days
+<br>
 <div align="center">
     <img src="images/forecast%203%20cities%201.png" alt="forecast 1">
     <br>
@@ -101,7 +93,7 @@ This page gives weather forecasts for a specific cities with Highcharts. They ca
 
 ### Favorite page
 This page lists all of the cities that were saved as favorite by the user so they can have a quck acces to them.
-
+<br>
 <div align="center">
     <img src="images/all%20favorites.png" alt="favorites">
 </div>
