@@ -61,7 +61,9 @@ graph TD
 
 ### Login
 The login page allows already existing users to connect to their account by entering ther email and password. If they are not already registered in the database, they can access the Register page through the register button.
-![login](images/login.png)
+<div align="center">
+  <img src="images/login.png" alt="login">
+</div>
 
 ### Register
 The registration page allows new users to create an account. To do this, they need to give their first and last name, their email and their password. 
