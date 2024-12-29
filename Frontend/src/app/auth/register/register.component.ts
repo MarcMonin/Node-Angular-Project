@@ -18,9 +18,9 @@ import {HttpClientModule,HttpClient} from "@angular/common/http";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  public registerForm: FormGroup; // Make sure this is public
-  public isRegistered = false; // Make sure this is public
-  registerError: string = ''; // Assure-toi qu'elles sont initialisées
+  public registerForm: FormGroup;
+  public isRegistered = false; 
+  registerError: string = ''; 
   registerSuccess: string = '';
   constructor(private fb: FormBuilder, private router: Router,private http: HttpClient) {
     this.registerForm = this.fb.group({

@@ -76,19 +76,19 @@ var LoginComponent = function () {
             var _this = this;
             console.log(this.loginForm.value);
             if (this.loginForm.valid) {
-                // Récupérer les valeurs du formulaire
+                // Get the form data
                 var formData = this.loginForm.value;
                 console.log('Form Data:', formData);
                 var _a = this.loginForm.value, email = _a.email, password = _a.password;
                 console.log('Form is valid, submitting...');
-                // Envoi de la requête HTTP à l'API pour vérifier l'email et le mot de passe
+                // Send the form data to the server
                 this.http.post('http://localhost:3000/login', { email: email, password: password }).subscribe(function (response) {
-                    // Si la réponse est réussie, rediriger vers la page d'accueil
+                    // If the login is successful, redirect to the home page
                     console.log('Login successful:', response);
                     _this.isLoggedIn = true;
                     _this.router.navigate(['/home']);
                 }, function (error) {
-                    // Afficher l'erreur en cas de connexion échouée
+                    // else, display an error message
                     _this.loginError = error.error.message || 'Login failed';
                 });
             }

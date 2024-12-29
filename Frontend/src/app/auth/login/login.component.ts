@@ -40,15 +40,15 @@ export class LoginComponent implements OnInit {
   onLogin() {
     console.log(this.loginForm.value);
     if (this.loginForm.valid) {
-      // Récupérer les valeurs du formulaire
+      // Get form data
       const formData = this.loginForm.value;
       console.log('Form Data:', formData);
       const { email, password } = this.loginForm.value;
       console.log('Form is valid, submitting...');
-      // Envoi de la requête HTTP à l'API pour vérifier l'email et le mot de passe
+      // Send login request
       this.http.post('http://localhost:3000/api/login', { email, password }).subscribe(
         (response: any) => {
-          // Si la r?ponse est r?ussie, rediriger vers la page d'accueil
+          // If login is successful, redirect to home page
           console.log('Login successful:', response);
           this.isLoggedIn = true;
           // Store user information
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         (error) => {
-          // Afficher l'erreur en cas de connexion échouée
+          // Display error message
           this.loginError = error.error.message || 'Login failed';
         }
       );

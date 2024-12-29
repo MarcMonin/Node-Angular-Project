@@ -5,73 +5,73 @@ input.ng-invalid.ng-touched {
 small {
   color: #005cff;
   font-size: 0.8em;
-  display: block; /* Assure que chaque <small> est sur une nouvelle ligne */
-  text-align: center; /* Centrer le texte */
+  display: block; 
+  text-align: center; 
 
 }
 
 .form-container {
-  width: 400px; /* Largeur du conteneur du formulaire */
-  padding: 20px; /* Espacement intérieur */
-  margin: 100px auto; /* Marge automatique pour centrer horizontalement et espacement vertical */
-  background-color: #f9f9f9; /* Couleur de fond */
-  border-radius: 8px; /* Coins arrondis */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre autour du rectangle */
+  width: 400px; 
+  padding: 20px; 
+  margin: 100px auto; 
+  background-color: #f9f9f9; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
 h2 {
-  text-align: center; /* Centrer le titre */
+  text-align: center;
 }
 
 .input-group {
-  margin-bottom: 15px; /* Espacement entre les groupes d'input */
-  text-align: center; /* Centrer le contenu de chaque groupe d'input */
+  margin-bottom: 15px; 
+  text-align: center; 
 }
 
 label {
-  display: block; /* Assure que chaque label est sur une nouvelle ligne */
-  margin-bottom: 5px; /* Espacement entre le label et l'input */
+  display: block;
+  margin-bottom: 5px; 
   text-align: center;
 }
 
 input {
-  width: 100%; /* Remplit toute la largeur du conteneur */
-  max-width: 300px; /* Limite la largeur maximale de l'input */
-  padding: 10px; /* Espacement intérieur */
-  margin-bottom: 15px; /* Espacement entre les inputs */
-  border: 1px solid #ccc; /* Bordure autour des inputs */
-  border-radius: 4px; /* Coins arrondis des inputs */
-  display: block; /* Assure que chaque input est un bloc */
-  margin-left: auto; /* Centrer horizontalement */
-  margin-right: auto; /* Centrer horizontalement */
+  width: 100%;
+  max-width: 300px; 
+  padding: 10px; 
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
 button {
-  width: auto; /* Ne pas occuper toute la largeur */
-  padding: 10px 20px; /* Espacement intérieur pour le bouton */
-  margin: 10px auto; /* Centre le bouton */
-  display: block; /* Assure que le bouton est un bloc pour le centrage */
-  background-color: #005cff; /* Couleur de fond du bouton */
-  color: white; /* Couleur du texte */
-  border: none; /* Pas de bordure */
-  border-radius: 4px; /* Coins arrondis */
-  cursor: pointer; /* Curseur pointer sur le bouton */
+  width: auto;
+  padding: 10px 20px;
+  margin: 10px auto;
+  display: block;
+  background-color: #005cff; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-  background-color: #6fa4fd; /* Couleur du bouton au survol */
+  background-color: #6fa4fd;
 }
 
 p {
-  text-align: center; /* Centrer le texte sous le formulaire */
+  text-align: center;
 }
 
 a {
-  color: #007bff; /* Couleur des liens */
-  text-decoration: none; /* Pas de soulignement */
+  color: #007bff; 
+  text-decoration: none; 
 }
 
 a:hover {
-  text-decoration: underline; /* Souligner au survol */
+  text-decoration: underline;
 }

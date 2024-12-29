@@ -41,8 +41,7 @@ export class HomeComponent implements OnInit {
   searchCity = '';
   weatherData: WeatherData[] = [];
   favourites: Favourite[] = [];
-  private userId = 1; // ? remplacer par l'ID de l'utilisateur connect?
-  private apiKey = 'VOTRE_CLE_API_OPENWEATHER';
+  private userId = 1; 
 
   favorites: string[] = [];
   
@@ -73,8 +72,8 @@ export class HomeComponent implements OnInit {
           this.weatherData = [data];
         },
         error: (error) => {
-          console.error('Erreur lors de la recherche:', error);
-          // Ajouter une gestion d'erreur utilisateur ici
+          console.error('Error when searching:', error);
+          
         }
       });
   }
