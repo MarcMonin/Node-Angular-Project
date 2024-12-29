@@ -265,177 +265,209 @@ app.get('/api/weather', (req: Request, res: Response): void => {
       })();
     });
     
-/**
- * @swagger
- * /api/historical:
- *   get:
- *     summary: Get the historical weather data for a specific location and a date range
- *     parameters:
- *       - in: query
- *         name: latitude
- *         schema:
- *           type: string
- *         required: true
- *         description: The latitude of the location
- *       - in: query
- *         name: longitude
- *         schema:
- *           type: string
- *         required: true
- *         description: The longitude of the location
- *       - in: query
- *         name: start_date
- *         schema:
- *           type: string
- *           format: date
- *         required: true
- *         description: The start date for the historical data
- *       - in: query
- *         name: end_date
- *         schema:
- *           type: string
- *           format: date
- *         required: true
- *         description: The end date for the historical data
- *     responses:
- *       200:
- *         description: The historical weather data for the specified location and date range
- *       400:
- *         description: There are missing required parameters
- *       500:
- *         description: Failed to fetch historical weather data
- */
-app.get('/api/historical', async (req: Request, res: Response) => {
-  const { latitude, longitude, start_date, end_date } = req.query;
-  console.log(req.query);
-  // Validate required parameters
-  if (!latitude || !longitude || !start_date || !end_date) {
-    res.status(400).json({
-      error: 'latitude, longitude, start_date, and end_date are required parameters',
-    });
-    return;
-  }
-
-  try {
-    // Make API request to Open-Meteo
-    const response = await axios.get(OPEN_METEO_URL, {
-      params: {
-        latitude,
-        longitude,
-        start_date,
-        end_date,
-        temperature_unit: 'celsius',
-      },
-    });
-
-    // Respond with the historical weather data
-    res.json(response.data);
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response) {
-      res.status(error.response.status).json({ error: error.response.data });
-    } else {
-      res.status(500).json({ error: 'Failed to fetch historical weather data' });
-    }
-  }
-});
-
-
-
-const db = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'root',
-  database: 'weather_login',
-});
-
-  // Route de connexion
-app.post('/api/login', (req: Request, res: Response):void => {
-  const { email, password }: { email: string; password: string } = req.body;
-
-  if (!email || !password) {
-      res.status(400).send({ message: 'Tous les champs sont requis.' });
-      return;
-  }
-
-  const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
-  db.query(sql, [email, password], (err, results: any[]):void => {
-      if (err) {
-          console.error('Erreur lors de la vérification des identifiants:', err);
-           res.status(500).send({ message: 'Erreur serveur.' });
-           return;
-      }
-
-      if (results.length > 0) {
-          const user = {
-              id: results[0].id,
-              email: results[0].email
-          };
-          res.status(200).send({ message: 'Connexion r?ussie', user });
-      } else {
-          res.status(401).send({ message: 'Identifiants invalides.' });
-      }
-  });
-});
-
-// Route d'enregistrement
-app.post('/api/register', (req: Request, res: Response):void => {
-  const { email, password }: { email: string; password: string } = req.body;
-
-  if (!email || !password) {
-       res.status(400).send({ message: 'Email et mot de passe sont obligatoires.' });
-       return;
-  }
-
-  const sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
-  db.query(sql, [email, password], (err, result):void => {
-      if (err) {
-          console.error('Erreur lors de l\'insertion des données :', err.message);
-           res.status(500).send({ message: 'Erreur interne du serveur.' });
-           return;
-      }
-      res.status(201).send({ message: 'Utilisateur enregistré avec succès.' });
-  });
-});
-
-// Route pour r?cup?rer les villes favorites d'un utilisateur
-app.get('/api/favourites/:userId', (req: Request, res: Response): void => {
-  const userId = req.params.userId;
-
-  const sql = 'SELECT * FROM favourites WHERE user_id = ?';
-  db.query(sql, [userId], (err, results: any[]): void => {
-      if (err) {
-          console.error('Erreur lors de la r?cup?ration des favoris:', err);
-          res.status(500).send({ message: 'Erreur serveur.' });
-          return;
-      }
-
-      res.status(200).send({ favourites: results });
-  });
-});
-
-// Route pour ajouter une ville favorite
-app.post('/api/favourites', (req: Request, res: Response): void => {
-  const { userId, cityName } = req.body;
-
-  if (!userId || !cityName) {
-      res.status(400).send({ message: 'UserId et cityName sont requis.' });
-      return;
-  }
-
-  const sql = 'INSERT INTO favourites (user_id, city_name) VALUES (?, ?)';
-  db.query(sql, [userId, cityName], (err, result): void => {
-      if (err) {
-          console.error('Erreur lors de l\'ajout du favori:', err);
-          res.status(500).send({ message: 'Erreur serveur.' });
-          return;
-      }
-
-      res.status(201).send({ 
-          message: 'Ville ajout?e aux favoris',
-          favourite: { userId, cityName }
+  /**
+   * @swagger
+   * /api/historical:
+   *   get:
+   *     summary: Get the historical weather data for a specific location and a date range
+   *     parameters:
+   *       - in: query
+   *         name: latitude
+   *         schema:
+   *           type: string
+   *         required: true
+   *         description: The latitude of the location
+   *       - in: query
+   *         name: longitude
+   *         schema:
+   *           type: string
+   *         required: true
+   *         description: The longitude of the location
+   *       - in: query
+   *         name: start_date
+   *         schema:
+   *           type: string
+   *           format: date
+   *         required: true
+   *         description: The start date for the historical data
+   *       - in: query
+   *         name: end_date
+   *         schema:
+   *           type: string
+   *           format: date
+   *         required: true
+   *         description: The end date for the historical data
+   *     responses:
+   *       200:
+   *         description: The historical weather data for the specified location and date range
+   *       400:
+   *         description: There are missing required parameters
+   *       500:
+   *         description: Failed to fetch historical weather data
+   */
+  app.get('/api/historical', async (req: Request, res: Response) => {
+    const { latitude, longitude, start_date, end_date } = req.query;
+    console.log(req.query);
+    // Validate required parameters
+    if (!latitude || !longitude || !start_date || !end_date) {
+      res.status(400).json({
+        error: 'latitude, longitude, start_date, and end_date are required parameters',
       });
+      return;
+    }
+
+    try {
+      // Make API request to Open-Meteo
+      const response = await axios.get(OPEN_METEO_URL, {
+        params: {
+          latitude,
+          longitude,
+          start_date,
+          end_date,
+          temperature_unit: 'celsius',
+        },
+      });
+
+      // Respond with the historical weather data
+      res.json(response.data);
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        res.status(error.response.status).json({ error: error.response.data });
+      } else {
+        res.status(500).json({ error: 'Failed to fetch historical weather data' });
+      }
+    }
   });
-});
+
+
+
+  const db = mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    password: 'root',
+    database: 'weather_login',
+  });
+
+    // Route de connexion
+  app.post('/api/login', (req: Request, res: Response):void => {
+    const { email, password }: { email: string; password: string } = req.body;
+
+    if (!email || !password) {
+        res.status(400).send({ message: 'Tous les champs sont requis.' });
+        return;
+    }
+
+    const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
+    db.query(sql, [email, password], (err, results: any[]):void => {
+        if (err) {
+            console.error('Erreur lors de la vérification des identifiants:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+
+        if (results.length > 0) {
+            const user = {
+                id: results[0].id,
+                email: results[0].email
+            };
+            res.status(200).send({ message: 'Connexion r?ussie', user });
+        } else {
+            res.status(401).send({ message: 'Identifiants invalides.' });
+        }
+    });
+  });
+
+  // Route d'enregistrement
+  app.post('/api/register', (req: Request, res: Response):void => {
+    const { email, password }: { email: string; password: string } = req.body;
+
+    if (!email || !password) {
+        res.status(400).send({ message: 'Email et mot de passe sont obligatoires.' });
+        return;
+    }
+
+    const sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
+    db.query(sql, [email, password], (err, result):void => {
+        if (err) {
+            console.error('Erreur lors de l\'insertion des données :', err.message);
+            res.status(500).send({ message: 'Erreur interne du serveur.' });
+            return;
+        }
+        res.status(201).send({ message: 'Utilisateur enregistré avec succès.' });
+    });
+  });
+
+  // Route pour r?cup?rer les villes favorites d'un utilisateur
+  app.get('/api/favourites/:userId', (req: Request, res: Response): void => {
+    const userId = req.params.userId;
+
+    const sql = 'SELECT * FROM favourites WHERE user_id = ?';
+    db.query(sql, [userId], (err, results: any[]): void => {
+        if (err) {
+            console.error('Erreur lors de la r?cup?ration des favoris:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+
+        res.status(200).send({ favourites: results });
+    });
+  });
+
+  // Route pour ajouter une ville favorite
+  app.post('/api/favourites', (req: Request, res: Response): void => {
+    const { userId, cityName } = req.body;
+
+    if (!userId || !cityName) {
+        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        return;
+    }
+
+    const sql = 'INSERT INTO favourites (user_id, city_name) VALUES (?, ?)';
+    db.query(sql, [userId, cityName], (err, result): void => {
+        if (err) {
+            console.error('Erreur lors de l\'ajout du favori:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+
+        res.status(201).send({ 
+            message: 'Ville ajout?e aux favoris',
+            favourite: { userId, cityName }
+        });
+    });
+  });
+  
+  // Route pour supprimer une ville favorite
+  app.delete('/api/favourites', (req: Request, res: Response): void => {
+    const { userId, cityName } = req.body;
+    console.log(req.body);
+    if (!userId || !cityName) {
+        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        return;
+    }
+
+    const sql = 'DELETE FROM favourites WHERE user_id = ? AND city_name = ?';
+    db.query(sql, [userId, cityName], (err, result: any): void => {
+        if (err) {
+            console.error('Erreur lors de la suppression du favori:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+
+        if (result.affectedRows === 0) {
+            res.status(404).send({ message: 'Favori non trouv?.' });
+            return;
+        }
+
+        res.status(200).send({ 
+            message: 'Ville supprim?e des favoris',
+            removed: { userId, cityName }
+        });
+    });
+  });
+
+
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
   

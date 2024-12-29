@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
     <div class="favorite-card">
       <h3>{{ cityName }}</h3>
       <button (click)="onRemove()" class="remove-btn">
-        <span>?</span>
+        <span> X </span>
       </button>
     </div>
   `,
@@ -26,11 +26,25 @@ import { CommonModule } from '@angular/common';
     }
     
     .remove-btn {
-      background: none;
-      border: none;
-      color: #ff4444;
-      font-size: 1.5rem;
-      cursor: pointer;
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 4px;
+  transition: all 0.2s ease;
+}
+    .remove-btn:hover {
+      background-color: #ff4444;
+      color: white;
     }
   `]
 })

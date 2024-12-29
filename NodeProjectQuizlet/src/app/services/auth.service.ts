@@ -48,6 +48,15 @@ export class AuthService {
 
   removeFavorite(cityName: string): Observable<any> {
     const userId = this.getCurrentUser()?.id;
-    return this.http.delete(`${this.apiUrl}/favourites/${userId}/${cityName}`);
+    return this.http.delete(`${this.apiUrl}/favourites`, {
+      body: { userId, cityName }
+    });
+  }
+
+  isLoggedIn(): boolean {
+    // Check if there's a current user or auth token
+    // This implementation depends on how you're storing the user's authentication state
+    const currentUser = localStorage.getItem('currentUser');
+    return !!currentUser;  // Returns true if currentUser exists, false otherwise
   }
 } 

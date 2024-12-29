@@ -12,11 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// we need to import the following packages to run the backend server
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const axios_1 = __importDefault(require("axios"));
+const mysql2_1 = __importDefault(require("mysql2"));
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+// Swagger configuration
 const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
@@ -34,10 +37,13 @@ const swaggerOptions = {
     apis: ['./src/**/*.ts'],
 };
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
+// We need to create an express application and define the port numberimport mysql from 'mysql2';
 const app = (0, express_1.default)();
 const port = 3000;
+// We need to use the express.json() middleware to translate JSON request bodies
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+// We need to define the API key and the base URL for the OpenWeatherMap API
 const API_KEY = 'd7d064027337f40818120e37735b771e';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast';
@@ -330,6 +336,113 @@ app.get('/api/historical', (req, res) => __awaiter(void 0, void 0, void 0, funct
         }
     }
 }));
+const db = mysql2_1.default.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    password: 'root',
+    database: 'weather_login',
+});
+// Route de connexion
+app.post('/api/login', (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        res.status(400).send({ message: 'Tous les champs sont requis.' });
+        return;
+    }
+    const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
+    db.query(sql, [email, password], (err, results) => {
+        if (err) {
+            console.error('Erreur lors de la vérification des identifiants:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+        if (results.length > 0) {
+            const user = {
+                id: results[0].id,
+                email: results[0].email
+            };
+            res.status(200).send({ message: 'Connexion r?ussie', user });
+        }
+        else {
+            res.status(401).send({ message: 'Identifiants invalides.' });
+        }
+    });
+});
+// Route d'enregistrement
+app.post('/api/register', (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        res.status(400).send({ message: 'Email et mot de passe sont obligatoires.' });
+        return;
+    }
+    const sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
+    db.query(sql, [email, password], (err, result) => {
+        if (err) {
+            console.error('Erreur lors de l\'insertion des données :', err.message);
+            res.status(500).send({ message: 'Erreur interne du serveur.' });
+            return;
+        }
+        res.status(201).send({ message: 'Utilisateur enregistré avec succès.' });
+    });
+});
+// Route pour r?cup?rer les villes favorites d'un utilisateur
+app.get('/api/favourites/:userId', (req, res) => {
+    const userId = req.params.userId;
+    const sql = 'SELECT * FROM favourites WHERE user_id = ?';
+    db.query(sql, [userId], (err, results) => {
+        if (err) {
+            console.error('Erreur lors de la r?cup?ration des favoris:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+        res.status(200).send({ favourites: results });
+    });
+});
+// Route pour ajouter une ville favorite
+app.post('/api/favourites', (req, res) => {
+    const { userId, cityName } = req.body;
+    if (!userId || !cityName) {
+        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        return;
+    }
+    const sql = 'INSERT INTO favourites (user_id, city_name) VALUES (?, ?)';
+    db.query(sql, [userId, cityName], (err, result) => {
+        if (err) {
+            console.error('Erreur lors de l\'ajout du favori:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+        res.status(201).send({
+            message: 'Ville ajout?e aux favoris',
+            favourite: { userId, cityName }
+        });
+    });
+});
+// Route pour supprimer une ville favorite
+app.delete('/api/favourites', (req, res) => {
+    const { userId, cityName } = req.body;
+    console.log(req.body);
+    if (!userId || !cityName) {
+        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        return;
+    }
+    const sql = 'DELETE FROM favourites WHERE user_id = ? AND city_name = ?';
+    db.query(sql, [userId, cityName], (err, result) => {
+        if (err) {
+            console.error('Erreur lors de la suppression du favori:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+        if (result.affectedRows === 0) {
+            res.status(404).send({ message: 'Favori non trouv?.' });
+            return;
+        }
+        res.status(200).send({
+            message: 'Ville supprim?e des favoris',
+            removed: { userId, cityName }
+        });
+    });
+});
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
