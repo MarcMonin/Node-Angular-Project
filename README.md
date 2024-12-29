@@ -75,7 +75,7 @@ This page gives weather forecasts for a specific city with Highcharts. They can 
 ### Favorite page
 This page lists all of the cities that were saved as favorite by the user so they can have a quck acces to them.
 
-##User Guide
+## User Guide
 Open the app in your browser.
 
 Create an account or log in to access personalized features like saving your favorite cities.
@@ -92,7 +92,7 @@ Access your saved cities on the "Favorite" page to manage your list.
 
 Enjoy using our weather app to stay informed about weather conditions in your favorite cities!
 
-##Links used for Research and Help during this project:
+## Links used for Research and Help during this project:
 High Charts: https://codepen.io/pen?&prefill_data_id=325529a3-52ee-4202-b6fc-997aceac62f7 https://www.highcharts.com/demo/highcharts/line-labels
 
 Open Weather Map API: https://openweathermap.org/api https://openweathermap.org/current https://www.youtube.com/watch?v=14MDWUXYYEM&ab_channel=Elio-GeeZMoKeZ
