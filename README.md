@@ -163,10 +163,10 @@ From there you have 4 options :\
 -Opening the Register page
 
 The Weather page allows to select a city and see its detailed weather information\
-The Forecast page lets you choose up to 3 cities by typing their names and see the forecast over the next 24 hours and over the next 5 days\
+The Forecast page lets you choose up to 3 cities by typing their names and see the forecast over the next 24 hours and over the next 5 days
 
 If you wish to login, you initially need to register by giving a surname, last name, email and password. The page will then automatically redirect you to the login page\
-Once you have logged in, you gain access to the account lobby, where you can choose favorite cities to see brief weather information. The advantage of logging in is the ability to have your favorite cities retained by the app the next time you open it.\
+Once you have logged in, you gain access to the account lobby, where you can choose favorite cities to see brief weather information. The advantage of logging in is the ability to have your favorite cities retained by the app the next time you open it.
 
 
 ## Links used for Research and Help during this project:
