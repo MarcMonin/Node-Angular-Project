@@ -38,7 +38,6 @@ It is also possible to save your favorite cities for a quicker access.
 graph TD
     A[Home Page] --> C[User Authentication Page]
     H --> B[Account lobby]
-    J --> C
     O --> F[ag-Grid Screen]
     M --> F
     O --> G[HighCharts Screen]
