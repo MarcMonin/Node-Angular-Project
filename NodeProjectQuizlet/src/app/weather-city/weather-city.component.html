@@ -1,6 +1,6 @@
 <div class="weather-page">
   <div class="search-container">
-    <h1>{{ city.value ? 'Weather for ' + city.value : 'Weather Forecast' }}</h1>
+    <h1>{{ city.value ? 'Weather for ' + city.value : 'Current Weather' }}</h1>
     <div class="search-box">
       <input #city type="text" placeholder="Enter city name">
       <button (click)="getWeather(city.value)">Get Weather</button>

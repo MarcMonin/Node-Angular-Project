@@ -22,8 +22,10 @@ export class WeatherCityComponent {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.city = this.route.snapshot.params['city'] || 'paris';
-    this.getWeather(this.city);
+    this.city = this.route.snapshot.params['city'] || '';
+    if (this.city) {
+      this.getWeather(this.city);
+    }
   }
 
   getWeather(city: string) {

@@ -52,12 +52,12 @@ export class ForecastComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.cities.length === 0) {
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: { cities: 'London,Paris,Berlin' }
-      });
-    }
+    // if (this.cities.length === 0) {
+    //   this.router.navigate([], {
+    //     relativeTo: this.route,
+    //     queryParams: { cities: 'London,Paris,Berlin' }
+    //   });
+    // }
   }
 
   onSearch() {
@@ -80,9 +80,6 @@ export class ForecastComponent implements OnInit {
 
   removeCity(city: string) {
     this.cities = this.cities.filter(c => c !== city);
-    if (this.cities.length === 0) {
-      this.cities = ['London']; // Default city if all are removed
-    }
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { cities: this.cities.join(',') }

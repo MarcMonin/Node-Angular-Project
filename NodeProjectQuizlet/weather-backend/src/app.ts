@@ -348,20 +348,47 @@ app.get('/api/weather', (req: Request, res: Response): void => {
     database: 'weather_login',
   });
 
-    // Route de connexion
+  /**
+ * @swagger
+ * /api/login:
+ *   post:
+ *     summary: Authentification of a user with their email and password
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: The user's email
+ *               password:
+ *                 type: string
+ *                 description: The user's password
+ *     responses:
+ *       200:
+ *         description: Successful authentication
+ *       400:
+ *         description: Missing email or password in the request
+ *       401:
+ *         description: Invalid mail or password
+ *       500:
+ *         description: Server error
+ */
   app.post('/api/login', (req: Request, res: Response):void => {
     const { email, password }: { email: string; password: string } = req.body;
 
     if (!email || !password) {
-        res.status(400).send({ message: 'Tous les champs sont requis.' });
+        res.status(400).send({ message: 'All fields are required.' });
         return;
     }
 
     const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
     db.query(sql, [email, password], (err, results: any[]):void => {
         if (err) {
-            console.error('Erreur lors de la vérification des identifiants:', err);
-            res.status(500).send({ message: 'Erreur serveur.' });
+            console.error('Error during credential verification:', err);
+            res.status(500).send({ message: 'Server error.' });
             return;
         }
 
@@ -370,42 +397,86 @@ app.get('/api/weather', (req: Request, res: Response): void => {
                 id: results[0].id,
                 email: results[0].email
             };
-            res.status(200).send({ message: 'Connexion r?ussie', user });
+            res.status(200).send({ message: 'Login successful', user });
         } else {
-            res.status(401).send({ message: 'Identifiants invalides.' });
+            res.status(401).send({ message: 'Invalid credentials.' });
         }
     });
   });
 
-  // Route d'enregistrement
+
+  /**
+ * @swagger
+ * /api/register:
+ *   post:
+ *     summary: Register a new user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: The email for the new user
+ *               password:
+ *                 type: string
+ *                 description: The password for the new user
+ *     responses:
+ *       201:
+ *         description: User is successfully registered
+ *       400:
+ *         description: Missing email or password in the request
+ *       500:
+ *         description: Server error
+ */
   app.post('/api/register', (req: Request, res: Response):void => {
     const { email, password }: { email: string; password: string } = req.body;
 
     if (!email || !password) {
-        res.status(400).send({ message: 'Email et mot de passe sont obligatoires.' });
+        res.status(400).send({ message: 'Email and password are required.' });
         return;
     }
 
     const sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
     db.query(sql, [email, password], (err, result):void => {
         if (err) {
-            console.error('Erreur lors de l\'insertion des données :', err.message);
-            res.status(500).send({ message: 'Erreur interne du serveur.' });
+            console.error('Error inserting data:', err.message);
+            res.status(500).send({ message: 'Internal server error.' });
             return;
         }
-        res.status(201).send({ message: 'Utilisateur enregistré avec succès.' });
+        res.status(201).send({ message: 'User successfully registered.' });
     });
   });
 
-  // Route pour r?cup?rer les villes favorites d'un utilisateur
+
+  /**
+ * @swagger
+ * /api/favourites/{userId}:
+ *   get:
+ *     summary: Get the favorite cities of a user
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the user
+ *     responses:
+ *       200:
+ *         description: A list of favorite cities
+ *       500:
+ *         description: Server error
+ */
   app.get('/api/favourites/:userId', (req: Request, res: Response): void => {
     const userId = req.params.userId;
 
     const sql = 'SELECT * FROM favourites WHERE user_id = ?';
     db.query(sql, [userId], (err, results: any[]): void => {
         if (err) {
-            console.error('Erreur lors de la r?cup?ration des favoris:', err);
-            res.status(500).send({ message: 'Erreur serveur.' });
+            console.error('Error retrieving favorites:', err);
+            res.status(500).send({ message: 'Server error.' });
             return;
         }
 
@@ -413,61 +484,111 @@ app.get('/api/weather', (req: Request, res: Response): void => {
     });
   });
 
-  // Route pour ajouter une ville favorite
+  /**
+ * @swagger
+ * /api/favourites:
+ *   post:
+ *     summary: Add a city to a user's favorites
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The ID of the user
+ *               cityName:
+ *                 type: string
+ *                 description: The name of the city to add
+ *     responses:
+ *       201:
+ *         description: The city is successfully added to favorites
+ *       400:
+ *         description: Missing userId or cityName in the request
+ *       500:
+ *         description: Server error
+ */
   app.post('/api/favourites', (req: Request, res: Response): void => {
     const { userId, cityName } = req.body;
 
     if (!userId || !cityName) {
-        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        res.status(400).send({ message: 'UserId and cityName are required.' });
         return;
     }
 
     const sql = 'INSERT INTO favourites (user_id, city_name) VALUES (?, ?)';
     db.query(sql, [userId, cityName], (err, result): void => {
         if (err) {
-            console.error('Erreur lors de l\'ajout du favori:', err);
-            res.status(500).send({ message: 'Erreur serveur.' });
+            console.error('Error adding favorite:', err);
+            res.status(500).send({ message: 'Server error.' });
             return;
         }
 
         res.status(201).send({ 
-            message: 'Ville ajout?e aux favoris',
+            message: 'City added to favorites.',
             favourite: { userId, cityName }
         });
     });
   });
   
-  // Route pour supprimer une ville favorite
+
+  /**
+ * @swagger
+ * /api/favourites:
+ *   delete:
+ *     summary: Remove a city from a user's favorites
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The ID of the user
+ *               cityName:
+ *                 type: string
+ *                 description: The name of the city to remove
+ *     responses:
+ *       200:
+ *         description: The city is successfully removed from favorites
+ *       400:
+ *         description: Missing userId or cityName in the request
+ *       404:
+ *         description: Favorite city was not found
+ *       500:
+ *         description: Server error
+ */
   app.delete('/api/favourites', (req: Request, res: Response): void => {
     const { userId, cityName } = req.body;
     console.log(req.body);
     if (!userId || !cityName) {
-        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        res.status(400).send({ message: 'UserId and cityName are required.' });
         return;
     }
 
     const sql = 'DELETE FROM favourites WHERE user_id = ? AND city_name = ?';
     db.query(sql, [userId, cityName], (err, result: any): void => {
         if (err) {
-            console.error('Erreur lors de la suppression du favori:', err);
-            res.status(500).send({ message: 'Erreur serveur.' });
+            console.error('Error deleting favorite:', err);
+            res.status(500).send({ message: 'Server error.' });
             return;
         }
 
         if (result.affectedRows === 0) {
-            res.status(404).send({ message: 'Favori non trouv?.' });
+            res.status(404).send({ message: 'Favorite not found.' });
             return;
         }
 
         res.status(200).send({ 
-            message: 'Ville supprim?e des favoris',
+            message: 'City removed from favorites.',
             removed: { userId, cityName }
         });
     });
   });
-
-
-
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
   
