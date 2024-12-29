@@ -109,7 +109,36 @@ app.post('/api/favourites', (req: Request, res: Response): void => {
     });
 });
 
-// Démarrage du serveur
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+// Route pour supprimer une ville favorite
+app.delete('/api/favourites', (req: Request, res: Response): void => {
+    const { userId, cityName } = req.body;
+
+    if (!userId || !cityName) {
+        res.status(400).send({ message: 'UserId et cityName sont requis.' });
+        return;
+    }
+
+    const sql = 'DELETE FROM favourites WHERE user_id = ? AND city_name = ?';
+    db.query(sql, [userId, cityName], (err, result: any): void => {
+        if (err) {
+            console.error('Erreur lors de la suppression du favori:', err);
+            res.status(500).send({ message: 'Erreur serveur.' });
+            return;
+        }
+
+        if (result.affectedRows === 0) {
+            res.status(404).send({ message: 'Favori non trouv?.' });
+            return;
+        }
+
+        res.status(200).send({ 
+            message: 'Ville supprim?e des favoris',
+            removed: { userId, cityName }
+        });
+    });
 });
+
+// // Démarrage du serveur
+// app.listen(port, () => {
+//     console.log(`Server is running on http://localhost:${port}`);
+// });

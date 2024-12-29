@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { FavoritesListComponent } from '../components/favorites-list/favorites-list.component';
+import { WeatherService } from '../services/weather.service';
 
 interface WeatherData {
   name: string;
@@ -25,7 +27,11 @@ interface Favourite {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    FavoritesListComponent
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -38,7 +44,11 @@ export class HomeComponent implements OnInit {
 
   favorites: string[] = [];
   
-  constructor(private authService: AuthService, private http: HttpClient) {}
+  constructor(
+    private authService: AuthService, 
+    private http: HttpClient,
+    private weatherService: WeatherService
+  ) {}
 
   ngOnInit() {
     this.loadFavorites();
@@ -55,7 +65,7 @@ export class HomeComponent implements OnInit {
   searchWeather() {
     if (!this.searchCity) return;
     
-    this.http.get<WeatherData>(`https://api.openweathermap.org/data/2.5/weather?q=${this.searchCity}&units=metric&appid=${this.apiKey}`)
+    this.weatherService.getWeather(this.searchCity)
       .subscribe({
         next: (data) => {
           this.weatherData = [data];
@@ -74,6 +84,16 @@ export class HomeComponent implements OnInit {
         this.loadFavorites(); // Reload the favorites list
       },
       error => console.error('Error adding to favorites:', error)
+    );
+  }
+
+  removeFromFavorites(cityName: string) {
+    this.authService.removeFavorite(cityName).subscribe(
+      response => {
+        console.log('City removed from favorites:', response);
+        this.loadFavorites();
+      },
+      error => console.error('Error removing from favorites:', error)
     );
   }
 }

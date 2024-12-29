@@ -45,4 +45,9 @@ export class AuthService {
     const userId = this.getCurrentUser()?.id;
     return this.http.get(`${this.apiUrl}/favourites/${userId}`);
   }
+
+  removeFavorite(cityName: string): Observable<any> {
+    const userId = this.getCurrentUser()?.id;
+    return this.http.delete(`${this.apiUrl}/favourites/${userId}/${cityName}`);
+  }
 } 

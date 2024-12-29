@@ -7,31 +7,29 @@
     <button (click)="searchWeather()">Rechercher</button>
   </div>
 
-  <!-- Affichage m?t?o -->
+  <!-- Affichage météo -->
   <div class="weather-card" *ngFor="let weather of weatherData">
     <h2>{{ weather.name }}</h2>
     <div class="weather-info">
       <img [src]="'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'" 
            [alt]="weather.weather[0].description">
-      <div class="temperature">{{ weather.main.temp | number:'1.0-0' }}?C</div>
+      <div class="temperature">{{ weather.main.temp | number:'1.0-0' }}°C</div>
       <div class="details">
-        <p>Ressenti: {{ weather.main.feels_like | number:'1.0-0' }}?C</p>
-        <p>Humidit?: {{ weather.main.humidity }}%</p>
+        <p>Ressenti: {{ weather.main.feels_like | number:'1.0-0' }}°C</p>
+        <p>Humidité: {{ weather.main.humidity }}%</p>
       </div>
       <button (click)="addToFavorites(weather.name)" 
               [disabled]="favorites.includes(weather.name)">
-        {{ favorites.includes(weather.name) ? '?' : '?' }} 
+        {{ favorites.includes(weather.name) ? '★' : '☆' }} 
         {{ favorites.includes(weather.name) ? 'Added to favorites' : 'Add to favorites' }}
       </button>
     </div>
   </div>
 
-  <!-- Display favorites list -->
-  <div class="favorites-section">
-    <h3>Your Favorite Cities</h3>
-    <ul>
-      <li *ngFor="let city of favorites">{{ city }}</li>
-    </ul>
-  </div>
+  <!-- Replace the favorites section with the new component -->
+  <app-favorites-list
+    [favorites]="favorites"
+    (removeCity)="removeFromFavorites($event)"
+  ></app-favorites-list>
 </div>
 
