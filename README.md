@@ -128,7 +128,7 @@ Finally, we used Swagger UI to view and test our CRUD routes with the /api-docs 
 
 This is a comprehensive guide to make the app work on any device.
 
-### Requirements :\
+### Requirements :
 -Node.js\
 -Npm (usually installed along node.js)\
 -Angular framework (use command npm install -g @angular/cli)\
@@ -160,7 +160,7 @@ From there you have 4 options :\
 -Opening the Weather page\
 -Opening the Forecast page\
 -Opening the Login page\
--Opening the Register page\
+-Opening the Register page
 
 The Weather page allows to select a city and see its detailed weather information\
 The Forecast page lets you choose up to 3 cities by typing their names and see the forecast over the next 24 hours and over the next 5 days\
