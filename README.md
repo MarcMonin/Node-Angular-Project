@@ -17,6 +17,7 @@ Lorrain Morlet - GitHub: Nasotro
 
 ## Table of Content
 - [Project Summary](#Project-Summary)
+- [Page Scheme](#Pages-Scheme)
 - [Page Description](#Description-of-each-page)
 - [Backend Description](#Backend-Description)
 - [User Guide](#User-Guide)
